@@ -2,8 +2,8 @@
 
 # Script to rebuild Docker image and redeploy to Kubernetes
 
-echo "🔨 Rebuilding Docker image..."
-docker build -t flask-app:latest .
+echo "🔨 Rebuilding Docker image (no cache)..."
+docker build --no-cache -t flask-app:latest .
 
 if [ $? -ne 0 ]; then
     echo "❌ Docker build failed!"
