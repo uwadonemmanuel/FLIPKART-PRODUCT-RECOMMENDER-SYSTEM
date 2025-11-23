@@ -152,7 +152,7 @@ git push origin main
 ## Point Docker to Minikube
 eval $(minikube docker-env)
 
-docker build -t flask-app:latest .
+docker build -t flask2-app:latest .
 
 kubectl create secret generic llmops-secrets \
   --from-literal=GROQ_API_KEY="" \

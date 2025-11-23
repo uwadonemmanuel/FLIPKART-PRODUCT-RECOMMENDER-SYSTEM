@@ -22,13 +22,13 @@ from langchain.chains import create_history_aware_retriever, create_retrieval_ch
 ## Step 2: Remove Old Docker Image
 
 ```bash
-docker rmi flask-app:latest
+docker rmi flask2-app:latest
 ```
 
 ## Step 3: Rebuild WITHOUT Cache
 
 ```bash
-docker build --no-cache -t flask-app:latest .
+docker build --no-cache -t flask2-app:latest .
 ```
 
 **IMPORTANT**: The `--no-cache` flag is CRITICAL. Without it, Docker will reuse cached layers with the old code.
@@ -37,7 +37,7 @@ docker build --no-cache -t flask-app:latest .
 
 ```bash
 # Check what's in the image
-docker run --rm flask-app:latest head -5 /app/flipkart/rag_chain.py
+docker run --rm flask2-app:latest head -5 /app/flipkart/rag_chain.py
 ```
 
 You should see `langchain_classic.chains`, NOT `langchain.chains`.
@@ -46,7 +46,7 @@ You should see `langchain_classic.chains`, NOT `langchain.chains`.
 
 ```bash
 # Delete old deployment
-kubectl delete deployment flask-app
+kubectl delete deployment flask2-app
 
 # Wait a moment
 sleep 5
@@ -55,19 +55,19 @@ sleep 5
 kubectl apply -f flask-deployment.yaml
 
 # Wait for rollout
-kubectl rollout status deployment/flask-app
+kubectl rollout status deployment/flask2-app
 ```
 
 ## Step 6: Check Logs
 
 ```bash
-kubectl logs -f deployment/flask-app
+kubectl logs -f deployment/flask2-app
 ```
 
 ## Quick One-Liner
 
 ```bash
-docker rmi flask-app:latest && docker build --no-cache -t flask-app:latest . && kubectl delete deployment flask-app && sleep 5 && kubectl apply -f flask-deployment.yaml && kubectl rollout status deployment/flask-app
+docker rmi flask2-app:latest && docker build --no-cache -t flask2-app:latest . && kubectl delete deployment flask2-app && sleep 5 && kubectl apply -f flask-deployment.yaml && kubectl rollout status deployment/flask2-app
 ```
 
 ## Why This Happens

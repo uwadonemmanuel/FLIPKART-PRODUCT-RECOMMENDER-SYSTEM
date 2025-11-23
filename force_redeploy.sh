@@ -7,7 +7,7 @@ echo "🔄 Forcing Kubernetes to use new image..."
 # Check if using minikube
 if command -v minikube &> /dev/null && minikube status &> /dev/null; then
     echo "📦 Detected minikube - loading image into minikube..."
-    minikube image load flask-app:latest
+    minikube image load flask2-app:latest
 else
     echo "ℹ️  Not using minikube, using local Docker"
 fi
@@ -18,7 +18,7 @@ kubectl delete pods -l app=flask --force --grace-period=0
 
 echo ""
 echo "🔄 Restarting deployment..."
-kubectl rollout restart deployment/flask-app
+kubectl rollout restart deployment/flask2-app
 
 echo ""
 echo "⏳ Waiting for new pods..."

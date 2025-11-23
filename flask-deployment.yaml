@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app
+  name: flask2-app
   labels:
     app: flask
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-container
-        image: flask-app:latest
+        image: flask2-app:latest
         imagePullPolicy: Never
         ports:
           - containerPort: 5000

@@ -7,7 +7,7 @@ The error shows the Docker container still has the old code. The container is tr
 ### Step 1: Rebuild Docker Image (No Cache)
 
 ```bash
-docker build --no-cache -t flask-app:latest .
+docker build --no-cache -t flask2-app:latest .
 ```
 
 This will:
@@ -21,7 +21,7 @@ You can verify the image has the correct code by checking it:
 
 ```bash
 # Create a temporary container to check
-docker run --rm flask-app:latest head -5 /app/flipkart/rag_chain.py
+docker run --rm flask2-app:latest head -5 /app/flipkart/rag_chain.py
 ```
 
 You should see:
@@ -36,7 +36,7 @@ from langchain_classic.chains.combine_documents import create_stuff_documents_ch
 
 ```bash
 # Delete the old deployment
-kubectl delete deployment flask-app
+kubectl delete deployment flask2-app
 
 # Wait a moment
 sleep 3
@@ -45,7 +45,7 @@ sleep 3
 kubectl apply -f flask-deployment.yaml
 
 # Wait for it to be ready
-kubectl rollout status deployment/flask-app
+kubectl rollout status deployment/flask2-app
 ```
 
 ### Step 4: Check Pod Status and Logs
@@ -55,7 +55,7 @@ kubectl rollout status deployment/flask-app
 kubectl get pods -l app=flask
 
 # Check logs
-kubectl logs -f deployment/flask-app
+kubectl logs -f deployment/flask2-app
 ```
 
 ## Quick Script
