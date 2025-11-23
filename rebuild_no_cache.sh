@@ -29,6 +29,10 @@ echo "🚀 Applying deployment..."
 kubectl apply -f flask-deployment.yaml
 
 echo ""
+echo "🔄 Forcing pod recreation by deleting existing pods..."
+kubectl delete pods -l app=flask
+
+echo ""
 echo "⏳ Waiting for deployment to be ready..."
 kubectl rollout status deployment/flask-app --timeout=5m
 
