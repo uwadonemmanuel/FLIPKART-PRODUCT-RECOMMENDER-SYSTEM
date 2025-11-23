@@ -9,13 +9,13 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 ## Work directory inside the docker container
 WORKDIR /app
 
-## Installing system dependancies
+## Installing system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-## Copy requirements first for better caching
+## Copy requirements first for better Docker layer caching
 COPY requirements.txt .
 
 ## Install requirements with SSL error handling
@@ -25,16 +25,14 @@ RUN pip install --no-cache-dir \
     --trusted-host pypi.python.org \
     -r requirements.txt
 
-## Copying all contents from local to app
+## Copy the rest of the application
 COPY . .
 
 ## Run setup.py (if needed)
 RUN pip install --no-cache-dir -e . || true
 
 # Used PORTS
-EXPOSE 5000
+EXPOSE 8501
 
 # Run the app 
-# CMD ["python", "app.py"]
-# Run the app 
-CMD ["python3", "app.py", "--server.port=5000", "--server.address=0.0.0.0", "--server.headless=true"]
+CMD ["streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
