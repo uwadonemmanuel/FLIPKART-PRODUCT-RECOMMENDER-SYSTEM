@@ -1,0 +1,26 @@
+# Copy this file to .env and fill in your actual values
+# DO NOT commit .env to git - it contains sensitive information
+
+# DataStax Astra DB Configuration
+# Get these from: https://astra.datastax.com/
+# 1. Create/Login to your account
+# 2. Create a Vector database
+# 3. Go to "Connect" tab to get your credentials
+ASTRA_DB_APPLICATION_TOKEN="AstraCS:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ASTRA_DB_KEYSPACE="default_keyspace"
+ASTRA_DB_API_ENDPOINT="https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxx.xx-xxxx-x.apps.astra.datastax.com"
+
+# HuggingFace Token
+# Get this from: https://huggingface.co/settings/tokens
+# 1. Login to HuggingFace
+# 2. Go to Settings > Access Tokens
+# 3. Create a new token with "Read" permissions
+HF_TOKEN="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Groq API Key (for LLM)
+# Get this from: https://console.groq.com/keys
+# 1. Create/Login to Groq account
+# 2. Go to API Keys section
+# 3. Create a new API key
+GROQ_API_KEY="gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+

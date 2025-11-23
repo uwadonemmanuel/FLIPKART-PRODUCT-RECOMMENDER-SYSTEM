@@ -1,0 +1,2 @@
+# Failed packages - run retry_failed.py to retry these
+huggingface-hub==0.36.0  # Could not fetch package information
