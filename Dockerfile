@@ -28,6 +28,10 @@ RUN pip install --no-cache-dir \
 ## Copying all contents from local to app
 COPY . .
 
+## Clean any Python cache files inside the container
+RUN find /app -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true && \
+    find /app -name "*.pyc" -delete 2>/dev/null || true
+
 ## Run setup.py (if needed)
 RUN pip install --no-cache-dir -e . || true
 
@@ -35,6 +39,4 @@ RUN pip install --no-cache-dir -e . || true
 EXPOSE 5000
 
 # Run the app 
-# CMD ["python", "app.py"]
-# Run the app 
-CMD ["python3", "app.py", "--server.port=5000", "--server.address=0.0.0.0", "--server.headless=true"]
+CMD ["python", "app.py"]
