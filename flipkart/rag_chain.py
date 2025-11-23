@@ -1,18 +1,8 @@
 from langchain_groq import ChatGroq
 # Langchain 1.0+ imports - handle different version structures
-try:
-    # Try langchain-classic first (for langchain 1.0+)
-    from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
-    from langchain_classic.chains.combine_documents import create_stuff_documents_chain
-except ImportError:
-    try:
-        # Try direct langchain.chains (older versions)
-        from langchain.chains import create_history_aware_retriever, create_retrieval_chain
-        from langchain.chains.combine_documents import create_stuff_documents_chain
-    except ImportError:
-        # Try langchain.chains.retrieval (some 1.0 versions)
-        from langchain.chains.retrieval import create_history_aware_retriever, create_retrieval_chain
-        from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
+
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
