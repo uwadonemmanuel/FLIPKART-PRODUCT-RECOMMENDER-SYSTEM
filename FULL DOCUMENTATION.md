@@ -6,7 +6,7 @@
 - **Create a Dockerfile**  
   Write a `Dockerfile` in the root of your project to containerize the app.
 
-- **Create Kubernetes Deployemtn file**  
+- **Create Kubernetes Deployemtn file**
   Make a file named 'llmops-k8s.yaml' 
 
 - **Create a VM Instance on Google Cloud**
@@ -204,7 +204,7 @@ kubectl port-forward --address 0.0.0.0 svc/grafana-service -n monitoring 3000:30
 
 
 Configure Grafana
-Go to Settings > Data Sources > Add Data Source
+Go to Settings or Connections > Data Sources > Add Data Source
 
 Choose Prometheus
 
@@ -212,7 +212,7 @@ URL: http://prometheus-service.monitoring.svc.cluster.local:9090
 
 Click Save & Test
 
-Green success mesaage shown....
+Green success message shown....
 
 
 ######################################

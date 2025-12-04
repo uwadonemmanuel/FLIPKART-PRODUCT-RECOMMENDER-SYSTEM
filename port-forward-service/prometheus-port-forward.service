@@ -1,0 +1,16 @@
+[Unit]
+Description=Kubectl Port Forward for Prometheus Service
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/kubectl port-forward --address 0.0.0.0 svc/prometheus-service -n monitoring 9090:9090
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+

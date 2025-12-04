@@ -1,0 +1,16 @@
+[Unit]
+Description=Kubectl Port Forward for Grafana Service
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/kubectl port-forward --address 0.0.0.0 svc/grafana-service -n monitoring 3000:3000
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+
